@@ -1,1 +1,14 @@
-<p>export default {<br/>  async fetch(request) {<br/>    const url = new URL(request.url);<br/><br/>    if (url.pathname === &quot;&#x2F;gas&quot;) {<br/>      return Response.redirect(<br/>        &quot;https:&#x2F;&#x2F;script.google.com&#x2F;macros&#x2F;s&#x2F;AKfycbxqAZDUQvQGZtArpBjnBqcmaQML5Xr0HkO0s1IhhZbHfJOH_YyAfoE0mJiah-98UdNl&#x2F;exec&quot;,<br/>        301<br/>      );<br/>    }<br/><br/>    return new Response(&quot;Not found&quot;, { status: 404 });<br/>  }<br/>};</p>
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/gas") {
+      return Response.redirect(
+        "https://script.google.com/macros/s/AKfycbxqAZDUQvQGZtArpBjnBqcmaQML5Xr0HkO0s1IhhZbHfJOH_YyAfoE0mJiah-98UdNl/exec",
+        301
+      );
+    }
+
+    return new Response("Not found", { status: 404 });
+  }
+};
