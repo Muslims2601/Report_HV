@@ -2,13 +2,15 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
-    if (url.pathname === "/gas") {
-      return Response.redirect(
-        "https://script.google.com/macros/s/AKfycbxqAZDUQvQGZtArpBjnBqcmaQML5Xr0HkO0s1IhhZbHfJOH_YyAfoE0mJiah-98UdNl/exec",
-        301
-      );
+    const routes = {
+      "/run": "https://script.google.com/macros/s/AKfycbxqAZDUQvQGZtArpBjnBqcmaQML5Xr0HkO0s1IhhZbHfJOH_YyAfoE0mJiah-98UdNl/exec",
+      "/api": "https://script.google.com/macros/s/AKfycbxqAZDUQvQGZtArpBjnBqcmaQML5Xr0HkO0s1IhhZbHfJOH_YyAfoE0mJiah-98UdNl/exec"
+    };
+
+    if (routes[url.pathname]) {
+      return Response.redirect(routes[url.pathname], 301);
     }
 
-    return new Response("Not found", { status: 404 });
+    return new Response("Not Found", { status: 404 });
   }
-};
+}
